@@ -55,4 +55,11 @@ public class FootballTeamTest {
 		FootballTeam team_3 = new FootballTeam(3);
 		assertTrue(team_2.compareTo(team_3) < 0);
 	}
+
+	@Test
+	public void teamsWithSameNumberOfMatchesWonShouldBeEqual() {
+		FootballTeam teamA = new FootballTeam(2);
+		FootballTeam teamB = new FootballTeam(2);
+		assertTrue(teamA.compareTo(teamB) == 0);
+	}
 }
