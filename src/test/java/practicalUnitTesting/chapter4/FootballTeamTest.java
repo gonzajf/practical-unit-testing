@@ -12,14 +12,24 @@ import junitparams.Parameters;
 public class FootballTeamTest {
 
 	public Object[] nbOfGamesWon() {
-		return new Object[] {0, 1, 2};
+		return new Object[] { 0, 1, 2 };
 	}
-	
+
 	@Test
 	@Parameters(method = "nbOfGamesWon")
 	public void constructorShouldSetGamesWon(int nbOfGamesWon) {
 		FootballTeam team = new FootballTeam(nbOfGamesWon);
 		assertEquals(nbOfGamesWon + " games passed to constructor, " + "but " + team.getGamesWon() + " were returned",
 				nbOfGamesWon, team.getGamesWon());
+	}
+
+	public Object[] illegalNbOfGamesWon() {
+		return new Object[] {-10, -1};
+	}
+
+	@Test(expected = IllegalArgumentException.class)
+	@Parameters(method = "illegalNbOfGamesWon")
+	public void constructorShouldThrowExceptionForIllegalGamesNb(int illegalNbOfGames) {
+		new FootballTeam(illegalNbOfGames);
 	}
 }
