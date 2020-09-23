@@ -1,6 +1,7 @@
 package practicalUnitTesting.chapter4;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -10,6 +11,8 @@ import junitparams.Parameters;
 
 @RunWith(JUnitParamsRunner.class)
 public class FootballTeamTest {
+
+	private static final int ANY_NUMBER = 123;
 
 	public Object[] nbOfGamesWon() {
 		return new Object[] { 0, 1, 2 };
@@ -24,12 +27,18 @@ public class FootballTeamTest {
 	}
 
 	public Object[] illegalNbOfGamesWon() {
-		return new Object[] {-10, -1};
+		return new Object[] { -10, -1 };
 	}
 
 	@Test(expected = IllegalArgumentException.class)
 	@Parameters(method = "illegalNbOfGamesWon")
 	public void constructorShouldThrowExceptionForIllegalGamesNb(int illegalNbOfGames) {
 		new FootballTeam(illegalNbOfGames);
+	}
+
+	@Test
+	public void shouldBePossibleToCompareTeams() {
+		FootballTeam team = new FootballTeam(ANY_NUMBER);
+		assertTrue("FootballTeam should implement Comparable", team instanceof Comparable);
 	}
 }
