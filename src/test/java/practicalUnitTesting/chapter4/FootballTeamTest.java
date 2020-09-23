@@ -41,4 +41,11 @@ public class FootballTeamTest {
 		FootballTeam team = new FootballTeam(ANY_NUMBER);
 		assertTrue("FootballTeam should implement Comparable", team instanceof Comparable);
 	}
+
+	@Test
+	public void teamsWithMoreMatchesWonShouldBeGreater() {
+		FootballTeam team_2 = new FootballTeam(2);
+		FootballTeam team_3 = new FootballTeam(3);
+		assertTrue(team_3.compareTo(team_2) > 0);
+	}
 }
