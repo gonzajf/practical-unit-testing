@@ -2,13 +2,13 @@ package practicalUnitTesting.chapter4;
 
 public class FootballTeam {
 
+	private int gamesWon;
+
 	public FootballTeam(int gamesWon) {
-		// TODO Auto-generated constructor stub
+		this.gamesWon = gamesWon;
 	}
 
 	public int getGamesWon() {
-		// TODO Auto-generated method stub
-		return 0;
+		return gamesWon;
 	}
-
 }
