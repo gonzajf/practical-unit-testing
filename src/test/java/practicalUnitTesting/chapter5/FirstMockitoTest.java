@@ -19,4 +19,10 @@ public class FirstMockitoTest {
 		when(myFerrari.needsFuel()).thenReturn(true);
 		assertTrue("after instructed test double should return what we want", myFerrari.needsFuel());
 	}
+
+	@Test(expected = RuntimeException.class)
+	public void throwException() {
+		when(myFerrari.needsFuel()).thenThrow(new RuntimeException());
+		myFerrari.needsFuel();
+	}
 }
