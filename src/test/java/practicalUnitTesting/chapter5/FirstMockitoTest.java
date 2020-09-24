@@ -13,4 +13,10 @@ public class FirstMockitoTest {
 	public void testIfCarIsACar() {
 		assertTrue(myFerrari instanceof Car);
 	}
+
+	@Test
+	public void testStubbing() {
+		when(myFerrari.needsFuel()).thenReturn(true);
+		assertTrue("after instructed test double should return what we want", myFerrari.needsFuel());
+	}
 }
