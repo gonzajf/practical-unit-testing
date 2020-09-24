@@ -25,4 +25,12 @@ public class FirstMockitoTest {
 		when(myFerrari.needsFuel()).thenThrow(new RuntimeException());
 		myFerrari.needsFuel();
 	}
+
+	@Test
+	public void testVerification() {
+		myFerrari.driveTo("Sweet home Alabama");
+		myFerrari.needsFuel();
+		verify(myFerrari).driveTo("Sweet home Alabama");
+		verify(myFerrari).needsFuel();
+	}
 }
