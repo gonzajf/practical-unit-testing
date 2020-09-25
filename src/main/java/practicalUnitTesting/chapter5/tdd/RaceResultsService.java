@@ -4,7 +4,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class RaceResultsService {
-	
+
 	private Set<Client> clients = new HashSet<>();
 
 	public void addSubscriber(Client client) {
@@ -12,13 +12,12 @@ public class RaceResultsService {
 	}
 
 	public void send(Message message) {
-		for(Client client : clients) {
+		for (Client client : clients) {
 			client.receive(message);
 		}
 	}
 
-	public void removeSubscriber(Client clientA) {
-		// TODO Auto-generated method stub
-		
+	public void removeSubscriber(Client client) {
+		clients.remove(client);
 	}
 }
