@@ -1,15 +1,14 @@
 package practicalUnitTesting.chapter5.tdd;
 
 public class RaceResultsService {
+	
+	private Client client;
 
 	public void addSubscriber(Client client) {
-		// TODO Auto-generated method stub
-		
+		this.client = client;
 	}
 
 	public void send(Message message) {
-		// TODO Auto-generated method stub
-		
+		client.receive(message);
 	}
-
 }
