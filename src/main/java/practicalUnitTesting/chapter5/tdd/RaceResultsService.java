@@ -1,11 +1,11 @@
 package practicalUnitTesting.chapter5.tdd;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 public class RaceResultsService {
 	
-	private List<Client> clients = new ArrayList<>();
+	private Set<Client> clients = new HashSet<>();
 
 	public void addSubscriber(Client client) {
 		clients.add(client);
