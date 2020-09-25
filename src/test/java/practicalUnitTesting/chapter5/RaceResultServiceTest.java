@@ -11,24 +11,22 @@ import practicalUnitTesting.chapter5.tdd.RaceResultsService;
 
 public class RaceResultServiceTest {
 
+	private RaceResultsService raceResults = new RaceResultsService();
+	private Message message = mock(Message.class);
+	private Client clientA = mock(Client.class, "clientA");
+	private Client clientB = mock(Client.class, "clientB");
+	
 	@Test
 	public void subscribedClientShouldReceiveMessage() {
-		RaceResultsService raceResults = new RaceResultsService();
-		Client client = mock(Client.class);
-		Message message = mock(Message.class);
 
-		raceResults.addSubscriber(client);
+		raceResults.addSubscriber(clientA);
 		raceResults.send(message);
 
-		verify(client).receive(message);
+		verify(clientA).receive(message);
 	}
 
 	@Test
 	public void messageShouldBeSentToAllSubscribedClients() {
-		RaceResultsService raceResults = new RaceResultsService();
-		Client clientA = mock(Client.class, "clientA");
-		Client clientB = mock(Client.class, "clientB");
-		Message message = mock(Message.class);
 		
 		raceResults.addSubscriber(clientA);
 		raceResults.addSubscriber(clientB);
