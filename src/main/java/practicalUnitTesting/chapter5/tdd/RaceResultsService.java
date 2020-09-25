@@ -16,4 +16,9 @@ public class RaceResultsService {
 			client.receive(message);
 		}
 	}
+
+	public void removeSubscriber(Client clientA) {
+		// TODO Auto-generated method stub
+		
+	}
 }

@@ -48,11 +48,21 @@ public class RaceResultServiceTest {
 
 	@Test
 	public void shouldSendOnlyOneMessageToMultiSubscriber() {
-		
+
 		raceResults.addSubscriber(clientA);
 		raceResults.addSubscriber(clientA);
 		raceResults.send(message);
-		
+
 		verify(clientA).receive(message);
+	}
+
+	@Test
+	public void unsubscribedClientShouldNotReceiveMessages() {
+		
+		raceResults.addSubscriber(clientA);
+		raceResults.removeSubscriber(clientA);
+		raceResults.send(message);
+		
+		verify(clientA, never()).receive(message);
 	}
 }
