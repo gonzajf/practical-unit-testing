@@ -17,12 +17,11 @@ public class RaceResultServiceTest {
 	private Client clientA = mock(Client.class, "clientA");
 	private Client clientB = mock(Client.class, "clientB");
 
-	
 	@Test
 	public void notSubscribedClientShouldNotReceiveMessage() {
-	
+
 		raceResults.send(message);
-		
+
 		verify(clientA, never()).receive(message);
 		verify(clientB, never()).receive(message);
 	}
@@ -45,5 +44,15 @@ public class RaceResultServiceTest {
 
 		verify(clientA).receive(message);
 		verify(clientB).receive(message);
+	}
+
+	@Test
+	public void shouldSendOnlyOneMessageToMultiSubscriber() {
+		
+		raceResults.addSubscriber(clientA);
+		raceResults.addSubscriber(clientA);
+		raceResults.send(message);
+		
+		verify(clientA).receive(message);
 	}
 }
