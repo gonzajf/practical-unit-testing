@@ -1,0 +1,27 @@
+package practicalUnitTesting.chapter9;
+
+import org.junit.Test;
+import static org.mockito.Mockito.*;
+import static org.junit.Assert.assertEquals;
+import static org.mockito.BDDMockito.given;
+
+public class BddMockitoTest {
+
+	private static final int ID_USER = 329847;
+
+	@Test
+	public void shouldReturnClient() {
+		// given
+		User USER = new User();
+		UserDAO dao = mock(UserDAO.class);
+		UserService service = new UserService(dao);
+		given(dao.getUser(ID_USER)).willReturn(USER);
+	
+		// when
+		User user = service.loadUser(ID_USER);
+		
+		// then
+		assertEquals(USER, user);
+	}
+
+}
