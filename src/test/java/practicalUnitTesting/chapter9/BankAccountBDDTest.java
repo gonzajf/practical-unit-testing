@@ -4,6 +4,9 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
+import practicalUnitTesting.chapter10.InvalidAmountException;
+import practicalUnitTesting.chapter10.NotEnoughMoneyException;
+
 public class BankAccountBDDTest {
 
 	@Test
@@ -17,7 +20,7 @@ public class BankAccountBDDTest {
 	}
 
 	@Test
-	public void shouldAllowToCreditAccount() {
+	public void shouldAllowToCreditAccount() throws InvalidAmountException {
 		// given
 		BankAccount account = new BankAccount();
 		// when
@@ -28,7 +31,7 @@ public class BankAccountBDDTest {
 	}
 
 	@Test
-	public void shouldAllowToDebitAccount() {
+	public void shouldAllowToDebitAccount() throws NotEnoughMoneyException, InvalidAmountException {
 		// given
 		BankAccount account = new BankAccount();
 		// when

@@ -15,13 +15,13 @@ public class BankAccountTest {
 	private BankAccount account = new BankAccount();
 
 	@Test
-	public void testBalance() {
+	public void testBalance() throws InvalidAmountException {
 		account.deposit(200);
 		assertEquals(200, account.getBalance());
 	}
 
 	@Test
-	public void testCredit() {
+	public void testCredit() throws InvalidAmountException {
 		account.deposit(100);
 		assertEquals(100, account.getBalance());
 		account.deposit(100);
@@ -29,7 +29,7 @@ public class BankAccountTest {
 	}
 
 	@Test
-	public void testDebit() {
+	public void testDebit() throws NotEnoughMoneyException, InvalidAmountException {
 		account.deposit(100);
 		account.withdraw(30);
 		assertEquals(70, account.getBalance());
